@@ -1,13 +1,90 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+.inputBox{
+    position: relative;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.messageWrap{
+    width: 100%;
+  height: 80vh;
+  overflow-y: scroll;
 }
+
+.user-name{
+    margin-right: 1em;
+}
+
+.talkWrap{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 1em;
+}
+
+.talkBubble{
+    background-color: #216ade;
+    color: white;
+    border-radius: 10rem;
+    border-top-right-radius: 1rem;
+    max-width: calc(50% - 67px);
+    overflow-wrap: break-word;
+    padding-left: 13px;
+    font-size: x-small;
+    margin-right: 1em;
+}
+
+.talkBubble p {
+    padding: .5rem;
+    padding-bottom: 0.1rem;
+    margin-right: .5em;
+    margin-top: .5em;
+}
+
+.user-name2{
+    margin-left: 1em;
+}
+
+
+.talkBubble2{
+    background-color: gray;
+    color: black;
+    border-radius: 10rem;
+    border-top-right-radius: 1rem;
+    max-width: calc(18em - 67px);
+    overflow-wrap: break-word;
+    padding-left: 13px;
+    font-size: x-small;
+    margin-left: 1em;
+}
+
+.talkBubble2 p {
+    padding: .5rem;
+    padding-bottom: .9rem;
+    padding-top: .9rem;
+    margin-right: .5em;
+    margin-top: .4em;
+}
+
+@media (max-width: 1400px) { 
+    .inputBox{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .sendButton{
+        position: absolute;
+        right: 0;
+        margin-right: 2rem;
+        cursor: pointer;
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+
+    .sendIcon{
+        position: absolute;
+        margin-left: -8.5px;
+        margin-top: -5px;
+    }
+
+ }
+
+ 
+
