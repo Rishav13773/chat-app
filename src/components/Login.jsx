@@ -4,9 +4,11 @@ import Card from 'react-bootstrap/Card';
 import Cookies from 'universal-cookie';
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from '../firebase-config';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = ({ setIsAuth, setUser }) => {
+    const history = useNavigate()
     const cookies = new Cookies()
 
     const signInWithGoogle = async () => {
@@ -14,7 +16,8 @@ const Login = ({ setIsAuth, setUser }) => {
             const result = await signInWithPopup(auth, provider);
             cookies.set("auth-token", result.user.refreshToken);
             setIsAuth(true);
-            setUser(auth.currentUser.displayName)
+            setUser(auth.currentUser.displayName);
+            history('/room')
         } catch (err) {
             console.error(err);
         }

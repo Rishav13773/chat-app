@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { db, auth } from "../firebase-config";
 import Navigator from './Navigator'
@@ -14,7 +15,7 @@ import InputBox from "./InputBox";
 import Messages from "./Messages";
 
 
-export const Chat = ({ room, user }) => {
+export const Chat = ({ room, user, setIsAuth, isAuth }) => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
     const messagesRef = collection(db, "messages");
@@ -53,7 +54,7 @@ export const Chat = ({ room, user }) => {
 
     return (
         <>
-            <Navigator />
+            <Navigator setIsAuth={setIsAuth} isAuth={isAuth} />
             <Messages messages={messages} room={room} user={user} />
             <InputBox handleSubmit={handleSubmit} setNewMessage={setNewMessage} newMessage={newMessage} />
         </>

@@ -3,12 +3,19 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { auth } from '../firebase-config';
+import Cookies from 'universal-cookie';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-
-const Navigator = () => {
+const Navigator = ({ setIsAuth, isAuth, }) => {
+    const cookies = new Cookies()
+    const navgate = useNavigate()
 
     const handeleSignOut = async () => {
         await signOut(auth)
+        cookies.remove(isAuth)
+        console.log(isAuth)
+        setIsAuth(false)
+        navgate('/');
     }
 
     return (
@@ -19,7 +26,7 @@ const Navigator = () => {
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
-                            <a onClick={handeleSignOut} className='text-white' href="#login">Logout</a>
+                            <NavLink onClick={handeleSignOut} className='text-white' to="/">Logout</NavLink>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>

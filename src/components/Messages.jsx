@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Container } from 'react-bootstrap'
 
 const Messages = ({ messages, room, user }) => {
+    const bottomRef = useRef(null)
+
+    useEffect(() => {
+        // scroll to bottom every time messages change
+        bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
+
+
     return (
         <>
             <Container>
@@ -12,7 +20,7 @@ const Messages = ({ messages, room, user }) => {
                     {messages.map((data) => (
                         <div key={data.id}>
                             {user === data.user ?
-                                <div>
+                                <div ref={bottomRef}>
                                     <div className='user-name d-flex flex-row-reverse'>
                                         <span style={{ fontSize: '13px', color: 'gray' }}>{data.user}</span>
                                     </div>
@@ -22,7 +30,6 @@ const Messages = ({ messages, room, user }) => {
                                                 <p className='talkText'>{data.text}</p>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 :
